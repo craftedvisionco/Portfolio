@@ -813,25 +813,28 @@
         </div>
       </div>
       <div class="contact-form reveal">
+      <form name="contact" method="POST" data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
         <div class="form-row">
           <div class="form-group">
             <label class="form-label">Name</label>
-            <input class="form-input" type="text" placeholder="Your name" />
+            <input class="form-input" type="text" name="name" placeholder="Your name" />
           </div>
           <div class="form-group">
             <label class="form-label">Email</label>
-            <input class="form-input" type="email" placeholder="your@email.com" />
+            <input class="form-input" type="email" name="email" placeholder="your@email.com" />
           </div>
         </div>
         <div class="form-group">
           <label class="form-label">Service Needed</label>
-          <input class="form-input" type="text" placeholder="e.g. Brand Identity, Web Design..." />
+          <input class="form-input" type="text" name="service" placeholder="e.g. Brand Identity, Web Design..." />
         </div>
         <div class="form-group">
           <label class="form-label">Tell Me About Your Project</label>
-          <textarea class="form-textarea" placeholder="Give me a brief overview of what you need..."></textarea>
+          <textarea class="form-textarea" name="message" placeholder="Give me a brief overview of what you need..."></textarea>
         </div>
-        <button class="btn" style="width:100%;text-align:center;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;">Send Message</button>
+        <button type="submit" class="btn" style="width:100%;text-align:center;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;">Send Message</button>
+        </form>
       </div>
     </div>
   </section>
