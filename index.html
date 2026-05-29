@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sahil Sharma — Creative Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #F7F5F2;
+      --ink: #1A1A18;
+      --muted: #8A8880;
+      --accent: #C8A96E;
+      --line: #E0DDD8;
+      --white: #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.5rem 4rem;
+      background: rgba(247,245,242,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      animation: fadeDown 0.8s ease both;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 300;
+      letter-spacing: 0.04em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 8rem 4rem 4rem;
+      gap: 4rem;
+    }
+
+    .hero-text { animation: fadeUp 1s 0.2s ease both; }
+
+    .hero-eyebrow {
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 6vw, 6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      max-width: 38ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-tags {
+      display: flex; flex-wrap: wrap; gap: 0.6rem;
+      margin-bottom: 3rem;
+    }
+
+    .tag {
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: 1px solid var(--line);
+      padding: 0.4rem 1rem;
+      border-radius: 999px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 2.2rem;
+      background: var(--ink);
+      color: var(--white);
+      text-decoration: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      transition: background 0.25s, transform 0.2s;
+    }
+    .btn:hover { background: var(--accent); transform: translateY(-2px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--ink);
+      margin-left: 1rem;
+    }
+    .btn-ghost:hover { background: var(--ink); color: var(--white); }
+
+    .hero-visual {
+      animation: fadeUp 1s 0.45s ease both;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .hero-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 2rem;
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .hero-card:hover { transform: translateX(8px); box-shadow: -4px 0 0 var(--accent); }
+
+    .card-icon {
+      font-size: 1.8rem;
+      width: 3rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    .card-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 400;
+    }
+
+    /* ── SECTION COMMON ── */
+    section { padding: 7rem 4rem; }
+    .section-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+    }
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      font-weight: 300;
+      margin-bottom: 1rem;
+      line-height: 1.15;
+    }
+    .section-sub {
+      color: var(--muted);
+      max-width: 52ch;
+      margin-bottom: 3.5rem;
+      line-height: 1.8;
+    }
+    .divider {
+      width: 100%;
+      height: 1px;
+      background: var(--line);
+      margin-bottom: 3.5rem;
+    }
+
+    /* ── ABOUT ── */
+    .about { background: var(--white); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .stat-block { padding: 1.5rem 0; border-top: 1px solid var(--line); }
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+    .stat-label { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    .about-body p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+    }
+
+    .skills-list {
+      display: flex; flex-wrap: wrap; gap: 0.5rem;
+      margin-top: 2rem;
+    }
+    .skill-chip {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      background: var(--bg);
+      padding: 0.4rem 0.9rem;
+      border-radius: 2px;
+      color: var(--ink);
+    }
+
+    /* ── SERVICES ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      border: 1px solid var(--line);
+      padding: 2.5rem 1.8rem;
+      border-radius: 3px;
+      background: var(--white);
+      transition: transform 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .service-card:hover { transform: translateY(-6px); border-color: transparent; }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon { font-size: 2rem; margin-bottom: 1.5rem; }
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.35rem;
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+    .service-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── PORTFOLIO ── */
+    .portfolio { background: var(--ink); }
+    .portfolio .section-label { color: var(--accent); }
+    .portfolio .section-title { color: var(--white); }
+    .portfolio .section-sub { color: rgba(255,255,255,0.45); }
+    .portfolio .divider { background: rgba(255,255,255,0.1); }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .portfolio-item {
+      border-radius: 3px;
+      overflow: hidden;
+      position: relative;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: #262622;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .portfolio-thumb {
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      transition: transform 0.4s ease;
+    }
+
+    .portfolio-item:hover .portfolio-thumb { transform: scale(1.08); }
+
+    .portfolio-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,26,24,0.95) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.5rem;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+
+    .portfolio-cat {
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.3rem;
+    }
+    .portfolio-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      color: var(--white);
+    }
+
+    /* gradient backgrounds for portfolio items */
+    .pi-1 .portfolio-thumb { background: linear-gradient(135deg, #1e293b, #334155); }
+    .pi-2 .portfolio-thumb { background: linear-gradient(135deg, #292524, #44403c); }
+    .pi-3 .portfolio-thumb { background: linear-gradient(135deg, #1c1917, #3f3f46); }
+    .pi-4 .portfolio-thumb { background: linear-gradient(135deg, #18181b, #27272a); }
+    .pi-5 .portfolio-thumb { background: linear-gradient(135deg, #14181c, #1e3a5f); }
+    .pi-6 .portfolio-thumb { background: linear-gradient(135deg, #1a0a00, #3d1a00); }
+
+    /* ── PROCESS ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .process-step {
+      padding: 2.5rem 2rem;
+      border-right: 1px solid var(--line);
+      transition: background 0.3s;
+    }
+    .process-step:last-child { border-right: none; }
+    .process-step:hover { background: var(--white); }
+
+    .step-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--line);
+      line-height: 1;
+      margin-bottom: 1.2rem;
+    }
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      margin-bottom: 0.6rem;
+    }
+    .step-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { background: var(--white); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .testimonial-card {
+      border: 1px solid var(--line);
+      padding: 2rem;
+      border-radius: 3px;
+      background: var(--bg);
+    }
+
+    .quote-mark {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem;
+      color: var(--accent);
+      line-height: 0.5;
+      margin-bottom: 1.2rem;
+      display: block;
+    }
+
+    .quote-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .quote-author { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.05em; }
+    .quote-role { font-size: 0.72rem; color: var(--muted); margin-top: 0.2rem; }
+
+    /* ── CONTACT ── */
+    .contact-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-info { }
+    .contact-info p { color: var(--muted); line-height: 1.8; margin-bottom: 2rem; font-size: 0.95rem; }
+
+    .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      color: var(--ink);
+      text-decoration: none;
+      padding: 0.8rem 0;
+      border-bottom: 1px solid var(--line);
+      transition: color 0.2s;
+    }
+    .contact-link:hover { color: var(--accent); }
+    .contact-link-icon { font-size: 1.1rem; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .form-group { display: flex; flex-direction: column; gap: 0.4rem; }
+    .form-label { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+
+    .form-input, .form-textarea {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      padding: 0.85rem 1rem;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--ink);
+      outline: none;
+      transition: border-color 0.2s;
+      width: 100%;
+    }
+    .form-input:focus, .form-textarea:focus { border-color: var(--accent); }
+    .form-textarea { resize: vertical; min-height: 130px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink);
+      color: rgba(255,255,255,0.35);
+      padding: 2.5rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+    }
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      color: var(--white);
+      font-size: 1.1rem;
+      font-weight: 300;
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .process-steps { grid-template-columns: repeat(2, 1fr); }
+      .process-step { border-bottom: 1px solid var(--line); }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; padding: 6rem 1.5rem 3rem; }
+      .hero-visual { display: none; }
+      section { padding: 5rem 1.5rem; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      .portfolio-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .contact-wrapper { grid-template-columns: 1fr; gap: 3rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Sahil Sharma</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <p class="hero-eyebrow">Creative Freelancer · Available for Projects</p>
+      <h1 class="hero-name">Sahil<br/><em>Sharma</em></h1>
+      <p class="hero-desc">I craft visual identities, compelling copy, intuitive web experiences, and cinematic video — all under one roof.</p>
+      <div class="hero-tags">
+        <span class="tag">Graphic Design</span>
+        <span class="tag">Copywriting</span>
+        <span class="tag">Web Design</span>
+        <span class="tag">Video Editing</span>
+      </div>
+      <a href="#work" class="btn">View My Work</a>
+      <a href="#contact" class="btn btn-ghost">Get in Touch</a>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="card-icon">🎨</div>
+        <div>
+          <p class="card-label">Latest Project</p>
+          <p class="card-title">Brand Identity — Lumière Studio</p>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="card-icon">✦</div>
+        <div>
+          <p class="card-label">Currently Open For</p>
+          <p class="card-title">Freelance Collaborations</p>
+        </div>
+      </div>
+      <div class="hero-card">
+        <div class="card-icon">📍</div>
+        <div>
+          <p class="card-label">Based In</p>
+          <p class="card-title">India · Works Globally</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about" id="about">
+    <div class="about-grid">
+      <div class="reveal">
+        <p class="section-label">About Me</p>
+        <h2 class="section-title">A multi-disciplinary creative.</h2>
+        <div class="about-stats">
+          <div class="stat-block">
+            <div class="stat-number">1+</div>
+            <div class="stat-label">Years of Experience</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">21+</div>
+            <div class="stat-label">Projects Completed</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Happy Clients</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-number">4</div>
+            <div class="stat-label">Creative Disciplines</div>
+          </div>
+        </div>
+      </div>
+      <div class="about-body reveal">
+        <p>Hi, I'm Sahil, a freelance creative based in India who brings ideas to life across multiple disciplines. Whether it's a bold brand identity, persuasive copy that converts, a sleek website, or a video that stops the scroll, I handle it all with intention and craft.</p>
+        <p>I believe great design is invisible: it guides, connects, and communicates without getting in the way. My process is rooted in understanding your goals deeply before putting pen to paper (or cursor to canvas).</p>
+        <p>When I'm not designing or editing, I'm probably studying the latest visual trends, testing new tools, or working on a personal creative project.</p>
+        <div class="skills-list">
+          <span class="skill-chip">Adobe Illustrator</span>
+          <span class="skill-chip">CorelDraw</span>
+          <span class="skill-chip">Photoshop</span>
+          <span class="skill-chip">Figma</span>
+          <span class="skill-chip">Premiere Pro</span>
+          <span class="skill-chip">After Effects</span>
+          <span class="skill-chip">HTML / CSS</span>
+          <span class="skill-chip">WordPress</span>
+          <span class="skill-chip">Webflow</span>
+          <span class="skill-chip">Copywriting</span>
+          <span class="skill-chip">SEO Writing</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="reveal">
+      <p class="section-label">What I Do</p>
+      <h2 class="section-title">Services</h2>
+      <p class="section-sub">From concept to final deliverable, I offer end-to-end creative services that help brands stand out and communicate clearly.</p>
+    </div>
+    <div class="divider"></div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">🎨</div>
+        <h3 class="service-name">Graphic Design</h3>
+        <p class="service-desc">Brand identities, logos, social media graphics, packaging, and print materials that leave a lasting impression.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">✍️</div>
+        <h3 class="service-name">Copywriting</h3>
+        <p class="service-desc">Website copy, ad scripts, product descriptions, email campaigns, and brand voice guidelines that convert and resonate.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🖥️</div>
+        <h3 class="service-name">Web Design</h3>
+        <p class="service-desc">Responsive, visually refined websites designed in Figma and built in Webflow or WordPress — fast, clean, and conversion-focused.</p>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">🎬</div>
+        <h3 class="service-name">Video Editing</h3>
+        <p class="service-desc">Reels, YouTube videos, brand films, and ad content edited with rhythm and purpose — motion graphics included.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section class="portfolio" id="work">
+    <div class="reveal">
+      <p class="section-label">Selected Work</p>
+      <h2 class="section-title">Portfolio</h2>
+      <p class="section-sub">A curated selection of recent projects across all four disciplines.</p>
+    </div>
+    <div class="divider"></div>
+    <div class="portfolio-grid">
+      <div class="portfolio-item pi-1 reveal">
+        <div class="portfolio-thumb">🎨</div>
+        <div class="portfolio-overlay">
+          <p class="portfolio-cat">Graphic Design</p>
+          <p class="portfolio-name">Hotel Chill Out</p>
+        </div>
+      </div>
+      <div class="portfolio-item pi-2 reveal">
+        <div class="portfolio-thumb">🖥️</div>
+        <div class="portfolio-overlay">
+          <p class="portfolio-cat">Web Design</p>
+          <p class="portfolio-name">School Webpage</p>
+        </div>
+      </div>
+      <div class="portfolio-item pi-3 reveal">
+        <div class="portfolio-thumb">🎬</div>
+        <div class="portfolio-overlay">
+          <p class="portfolio-cat">Video Editing</p>
+          <p class="portfolio-name">Brand promotion video</p>
+        </div>
+      </div>
+      <div class="portfolio-item pi-4 reveal">
+        <div class="portfolio-thumb">✍️</div>
+        <div class="portfolio-overlay">
+          <p class="portfolio-cat">Copywriting</p>
+          <p class="portfolio-name">Hotel Chill Out Copy</p>
+        </div>
+      </div>
+      <div class="portfolio-item pi-5 reveal">
+        <div class="portfolio-thumb">🎨</div>
+        <div class="portfolio-overlay">
+          <p class="portfolio-cat">Graphic Design</p>
+          <p class="portfolio-name">City Competition Certificate</p>
+        </div>
+      </div>
+      <div class="portfolio-item pi-6 reveal">
+        <div class="portfolio-thumb">🎬</div>
+        <div class="portfolio-overlay">
+          <p class="portfolio-cat">Video Editing</p>
+          <p class="portfolio-name">Instagram Reel</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="reveal">
+      <p class="section-label">How I Work</p>
+      <h2 class="section-title">My Process</h2>
+      <p class="section-sub">A clear, collaborative workflow so you always know what's happening, and what's coming next.</p>
+    </div>
+    <div class="divider"></div>
+    <div class="process-steps reveal">
+      <div class="process-step">
+        <div class="step-num">01</div>
+        <h3 class="step-title">Discovery</h3>
+        <p class="step-desc">I start by understanding your goals, audience, and vision through a detailed brief or call.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02</div>
+        <h3 class="step-title">Strategy</h3>
+        <p class="step-desc">Research, references, and a creative direction are established before any design begins.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03</div>
+        <h3 class="step-title">Creation</h3>
+        <p class="step-desc">I craft the work with precision — sharing drafts at key milestones for your feedback.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">04</div>
+        <h3 class="step-title">Delivery</h3>
+        <p class="step-desc">Final files handed over in all formats you need, with a walkthrough if required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="reveal">
+      <p class="section-label">Kind Words</p>
+      <h2 class="section-title">What Clients Say</h2>
+    </div>
+    <div class="divider"></div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">Sahil designed a menu for our hotel and delivered it ahead of schedule. The design is both elegant and functional, exactly what we needed.</p>
+        <p class="quote-author">Lakshay</p>
+        <p class="quote-role">Owner, Hotel Chill Out</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">We hired Sahil to create our school webpage and he delivered beyond our expectations. The site is modern, user-friendly, and effectively communicates our message.</p>
+        <p class="quote-author">Arjun Kapoor</p>
+        <p class="quote-role">School Administrator</p>
+      </div>
+      <div class="testimonial-card reveal">
+        <span class="quote-mark">"</span>
+        <p class="quote-text">The video Sahil did an amazing job editing the video from my family function. It turned out better than I had imagined!</p>
+        <p class="quote-author">Priya Nair</p>
+        <p class="quote-role">Client</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="reveal">
+      <p class="section-label">Let's Talk</p>
+      <h2 class="section-title">Start a Project</h2>
+      <p class="section-sub">Have a project in mind? I'd love to hear about it. Fill out the form or reach out directly — I typically respond within 5 hours.</p>
+    </div>
+    <div class="divider"></div>
+    <div class="contact-wrapper">
+      <div class="contact-info reveal">
+        <p>Whether you need a logo designed, a website built, a video edited, or copy written — I'm here to help you make it happen. Let's create something great together.</p>
+        <div class="contact-links">
+          <a href="mailto:craftedvisionco7@gmail.com" class="contact-link">
+            <span class="contact-link-icon">✉️</span>
+            craftedvisionco7@gmail.com
+          </a>
+          <a href="https://www.linkedin.com/in/crafted-vision-co-83abb1391/?skipRedirect=true" target="_blank" class="contact-link">
+            <span class="contact-link-icon">💼</span>
+            linkedin.com/crafted_vision co
+          </a>
+          <a href="https://www.behance.net/crafted_visionco" target="_blank" class="contact-link">
+            <span class="contact-link-icon">🎨</span>
+            behance.net/craftedvisionco_
+          </a>
+          <a href="https://www.instagram.com/crafted_visionco/" target="_blank" class="contact-link">
+            <span class="contact-link-icon">📸</span>
+            instagram.com/crafted_visionco                                
+          </a>
+        </div>
+      </div>
+      <div class="contact-form reveal">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input class="form-input" type="text" placeholder="Your name" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="your@email.com" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service Needed</label>
+          <input class="form-input" type="text" placeholder="e.g. Brand Identity, Web Design..." />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell Me About Your Project</label>
+          <textarea class="form-textarea" placeholder="Give me a brief overview of what you need..."></textarea>
+        </div>
+        <button class="btn" style="width:100%;text-align:center;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;">Send Message</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <span class="footer-logo">Sahil Sharma</span>
+    <span>© 2026 · All rights reserved</span>
+    <span>Designed with intention</span>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 60);
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(r => observer.observe(r));
+
+    // Smooth nav highlight
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    window.addEventListener('scroll', () => {
+      let current = '';
+      sections.forEach(s => {
+        if (window.scrollY >= s.offsetTop - 120) current = s.id;
+      });
+      navLinks.forEach(a => {
+        a.style.color = a.getAttribute('href') === '#' + current ? 'var(--ink)' : '';
+      });
+    });
+  </script>
+</body>
+</html>
